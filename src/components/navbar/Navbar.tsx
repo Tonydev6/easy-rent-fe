@@ -41,7 +41,7 @@ export const Navbar = () => {
   return (
     <>
       <AppBar position="static" color="transparent">
-        <Toolbar sx={{ justifyContent: "space-between" }}>
+        <Toolbar sx={{ justifyContent: "space-between", textShadow: "none" }}>
           <Typography
             variant="h6"
             noWrap
@@ -94,7 +94,12 @@ export const Navbar = () => {
                 onChange={(e, value) => setValue(value)}
               >
                 {menuLinks.map((link: string) => {
-                  return <Tab label={link} onClick={() => goTo(link)} />;
+                  return (
+                    <Tab
+                      label={<Typography variant="body2"> {link}</Typography>}
+                      onClick={() => goTo(link)}
+                    />
+                  );
                 })}
               </Tabs>
               <Box sx={{ "& button": { m: 1 } }}>

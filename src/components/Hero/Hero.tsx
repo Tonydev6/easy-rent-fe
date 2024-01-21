@@ -1,47 +1,58 @@
 import { Title } from "@mui/icons-material";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Typography, styled } from "@mui/material";
 import Container from "@mui/material/Container";
+import car from "../../media/car.png";
 import React from "react";
-import image from "../../media/car.png";
 export const Hero = () => {
-  return (
-    <>
-      <Box sx={{ backgroundColor: "#E6F0FF", minHeight: "80vh" }}>
-        <Container>
-          <Button>
-            <Box sx={{ flex: "1" }}>
-              <Typography
-                variant="body2"
-                sx={{
-                  fontSize: "18px",
-                  color: "#687690",
-                  fontWeight: "500",
-                  mt: 10,
-                  mb: 4,
-                }}
-              >
-                Welcome to Besnik Agency
-              </Typography>
-              <Title>Discover a place where you'll love to live.</Title>
-              <Typography
-                variant="body2"
-                sx={{ fontSize: "18px", color: "#5A6473", my: 4 }}
-              >
-                Be the first to get the best real estate deals before they hit
-                the mass market! Hot foreclosure deals with one simple search!
-              </Typography>
-            </Box>
+  const CustomBox = styled(Box)(({ theme }) => ({
+    display: "flex",
+    justifyContent: "center",
+    gap: theme.spacing(5),
+    marginTop: theme.spacing(3),
+    [theme.breakpoints.down("md")]: {
+      flexDirection: "column",
+      alignItems: "center",
+      textAlign: "center",
+    },
+  }));
 
-            <Box sx={{ flex: "1" }}>
-              <img
-                src={image}
-                alt="heroImg"
-                style={{ maxWidth: "100%", marginBottom: "2rem" }}
-              />
-            </Box>
-          </Button>
-        </Container>
-      </Box>
-    </>
+  const Title = styled(Typography)(({ theme }) => ({
+    fontSize: "64px",
+    color: "#000336",
+    fontWeight: "bold",
+    margin: theme.spacing(4, 0, 4, 0),
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "40px",
+    },
+  }));
+
+  return (
+    <Box sx={{ minHeight: "80vh" }}>
+      <Container>
+        <CustomBox>
+          <Box sx={{ flex: "1" }}>
+            <Title variant="h1">Find, Book and rent a car Easily</Title>
+            <Typography
+              variant="body2"
+              sx={{ fontSize: "18px", color: "#5A6473", my: 4 }}
+            >
+              Get a car wherever and whenever you need it
+            </Typography>
+
+            <Button color="secondary" variant="contained">
+              Book
+            </Button>
+          </Box>
+
+          <Box sx={{ flex: "1.25" }}>
+            <img
+              src={car}
+              alt="heroImg"
+              style={{ maxWidth: "100%", marginBottom: "2rem" }}
+            />
+          </Box>
+        </CustomBox>
+      </Container>
+    </Box>
   );
 };
